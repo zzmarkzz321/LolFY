@@ -59,8 +59,6 @@ typings/
 .env
 
 # intelliJ folders
-.idea
-
-.idea/workspace.xml
+.idea/*
 
 .DS_Store
