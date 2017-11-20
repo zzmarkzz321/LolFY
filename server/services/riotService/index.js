@@ -1,5 +1,7 @@
 'use strict';
 
+const common = require('../../common/common');
+
 function RiotService() {
 }
 
@@ -51,7 +53,7 @@ const _getSummonerId = (summonerName) => {
  * @param summonerName
  * @return Promise
  */
-RiotService.prototype.getRecetMatchHistory = (summonerName) => {
+RiotService.prototype.getRecentMatchHistory = (summonerName) => {
     /*
         TODO santize the input
         TODO perform a check if the data has been cached {summonerName: {a json of already formatted data}}

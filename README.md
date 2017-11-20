@@ -8,3 +8,11 @@ A mini LoL stats application
 3. RIOT Games API for Summoner Stats
 4. ReactJS on the front end
 5. NodeJS and Express on the back end
+
+
+## API endpoints
+
+HTTP | URI | Action
+--- | --- | ---
+**GET** | /riot/api/<summonerName> | Grabs Summoner Match History
+**GET** | /match-history/<matchID> | Given a match id, grabs match details for that match

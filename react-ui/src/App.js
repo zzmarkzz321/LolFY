@@ -1,30 +1,30 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './styles/App.css';
 import Axios from 'axios';
-import {Navigation} from "./components/standard-nav";
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            message: null,
+            match_info: null,
             fetching: true,
             val: 1
         };
     }
 
     componentDidMount() {
-        Axios.get('/api?val=' + this.state.val)
+        Axios.get('/riot/api/MarkandSweep')
             .then(response => {
                 this.setState({
-                    message: response.data.message,
+                    match_info: response.data.match_info,
                     fetching: false
-                })
+                });
+                console.log(response)
             })
             .catch(err => {
                 this.setState({
-                    message: err,
+                    match_info: err,
                     fetching: false,
                     val: 1
                 })
@@ -34,8 +34,6 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-
-                <Navigation fn={this.changeVal}/>
 
                 <div className="App-header">
                     <img src={logo} className="App-logo" alt="logo"/>
@@ -48,7 +46,7 @@ class App extends Component {
                 <p className="App-intro">
                     {this.state.fetching
                         ? 'Fetching message from API'
-                        : this.state.message}
+                        : this.state.match_info}
                 </p>
             </div>
         );
