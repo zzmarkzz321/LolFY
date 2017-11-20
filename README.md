@@ -16,3 +16,8 @@ HTTP | URI | Action
 --- | --- | ---
 **GET** | /riot/api/<summonerName> | Grabs Summoner Match History
 **GET** | /match-history/<matchID> | Given a match id, grabs match details for that match
+
+## Notes
+
+Since the match API returns a huge json AND we do that for 20 games, We'll just present a single match history
+on the UI, and then make a request per game.
