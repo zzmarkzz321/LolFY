@@ -11,8 +11,9 @@ const ResultComponent = () => (
         <div className="App-header">
             <h2>Insert Summoner Name</h2>
 
-
         </div>
+
+        <MainInfoComponent/>
     </div>
 );
 

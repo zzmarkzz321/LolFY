@@ -23,18 +23,18 @@ class App extends Component {
     }
 
     render() {
-        // if (this.state.match_info === null) {
-        //     return (
-        //         <Home _onSubmit={this._onSubmit}/>
-        //     );
-        // } else {
-        //     return (
-        //         <Result />
-        //     )
-        // }
-        return (
-            <Result/>
-        )
+        if (this.state.match_info === null) {
+            return (
+                <Home _onSubmit={this._onSubmit}/>
+            );
+        } else {
+            return (
+                <Result />
+            )
+        }
+        // return (
+        //     <Result/>
+        // )
 
     }
 }
