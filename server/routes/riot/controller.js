@@ -14,7 +14,10 @@ controller.getSummonerInfo = (req, res) => {
     let summonerName = req.params.summoner;
 
     return RiotService.prototype.getRecentMatchHistory(summonerName)
-        .then(() => {
+        .then((result) => {
+            console.log(result);
+
+            // replace with the summoner info
             res.json({'match_info': 'SummonerInfo hit!'});
         })
         .catch(() => {
