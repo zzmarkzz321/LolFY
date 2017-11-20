@@ -21,3 +21,9 @@ HTTP | URI | Action
 
 Since the match API returns a huge json AND we do that for 20 games, We'll just present a single match history
 on the UI, and then make a request per game.
+
+
+## Styling:
+
+React states: under_score
+Backend Variables: camelCase
