@@ -21,7 +21,7 @@ controller.getSummonerInfo = (req, res) => {
             res.json({'match_info': 'SummonerInfo hit!'});
         })
         .catch(() => {
-
+            res.json({'match_info': 'gay hit'});
         });
 
 };

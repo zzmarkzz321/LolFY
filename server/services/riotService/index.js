@@ -15,6 +15,10 @@ function RiotService() {
  */
 const _formatMatchData = (recentMatchDetails) => {
 
+    console.log('******');
+    console.log(recentMatchDetails);
+    console.log('******');
+
     let matchInfoSchema = {
         outcome: '',
         gameLength: '',
@@ -26,7 +30,7 @@ const _formatMatchData = (recentMatchDetails) => {
         level: '',
         creepScore: '',
         creepScorePerMinute: ''
-    }
+    };
 
     return matchInfoSchema;
 };
@@ -36,26 +40,6 @@ const _formatMatchData = (recentMatchDetails) => {
  * @private
  */
 const _getChamponImage = (championID) => {
-
-};
-
-/**
- * Grabs the matchID needed for the match histories
- * @private
- * @param recentMatches: a json of the summoners recent matches
- */
-const _getMatchInfo = (matchID) => {
-    let url = '/lol/match/v3/matches/' + matchID + '?api_key=';
-
-    return new Promise((resolve, reject) => {
-        Axios.get(baseURI + url + RIOT_API_KEY)
-            .then((response) => {
-                resolve({"recentMatchInfo": response.data})
-            })
-            .catch((err) => {
-                reject({err});
-            })
-    })
 
 };
 
@@ -121,15 +105,16 @@ RiotService.prototype.getRecentMatchHistory = (summonerName) => {
                 return _getRecentMatches(summonerID);
             })
             .then((recentMatches) => {
-                let recentMatchDetails = [];
+                let recentMatchesID = [];
+
                 recentMatches.matches.map((match) => {
-                    recentMatchDetails.push(_getMatchInfo(match));
+                    recentMatchesID.push(match.gameId);
                 });
-                return recentMatchDetails;
+                return recentMatchesID;
             })
-            .then((recentMatchDetails) => {
-                let formattedMatchDetails = _formatMatchData(recentMatchDetails);
-                resolve({'recentMatchDetails': formattedMatchDetails});
+            .then((recentMatchesID) => {
+                // let formattedMatchDetails = _formatMatchData(recentMatchDetails);
+                resolve({'recentMatchDetails': recentMatchesID});
             })
             .catch(() => {
                 reject({'err': 'does not work'});
@@ -142,7 +127,17 @@ RiotService.prototype.getRecentMatchHistory = (summonerName) => {
  * @param matchID
  */
 RiotService.prototype.getMatchInfo = (matchID) => {
+    let url = '/lol/match/v3/matches/' + matchID + '?api_key=';
 
+    return new Promise((resolve, reject) => {
+        Axios.get(baseURI + url + RIOT_API_KEY)
+            .then((response) => {
+                resolve({"recentMatchInfo": response.data})
+            })
+            .catch((err) => {
+                reject({err});
+            })
+    })
 };
 
 module.exports = RiotService;

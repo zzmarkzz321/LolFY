@@ -8,7 +8,9 @@
   "dependencies": {
     "axios": "^0.17.1",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.76.0"
   },
   "scripts": {
     "start": "react-scripts start",
