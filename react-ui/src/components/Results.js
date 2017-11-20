@@ -1,21 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class ResultComponent extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            match_info: {},
-            results: 20
-        }
-    }
+const MainInfoComponent = () => (
+    <div>
 
-    render() {
-        return (
-            <div>
-                <h1>RESULTS PAGE</h1>
-            </div>
-        );
-    }
-}
+    </div>
+);
+
+const ResultComponent = () => (
+    <div className="App">
+        <div className="App-header">
+            <h2>Insert Summoner Name</h2>
+
+
+        </div>
+    </div>
+);
 
 export const Result = ResultComponent;
