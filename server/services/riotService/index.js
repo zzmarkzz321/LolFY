@@ -15,10 +15,6 @@ function RiotService() {
  */
 const _formatMatchData = (recentMatchDetails) => {
 
-    console.log('******');
-    console.log(recentMatchDetails);
-    console.log('******');
-
     let matchInfoSchema = {
         outcome: '',
         gameLength: '',
@@ -32,7 +28,9 @@ const _formatMatchData = (recentMatchDetails) => {
         creepScorePerMinute: ''
     };
 
-    return matchInfoSchema;
+    //TODO replace after testing
+    // return matchInfoSchema;
+    return recentMatchDetails;
 };
 
 /**
@@ -113,8 +111,7 @@ RiotService.prototype.getRecentMatchHistory = (summonerName) => {
                 return recentMatchesID;
             })
             .then((recentMatchesID) => {
-                // let formattedMatchDetails = _formatMatchData(recentMatchDetails);
-                resolve({'recentMatchDetails': recentMatchesID});
+                resolve({'recentMatchID': recentMatchesID});
             })
             .catch(() => {
                 reject({'err': 'does not work'});
@@ -138,6 +135,38 @@ RiotService.prototype.getMatchInfo = (matchID) => {
                 reject({err});
             })
     })
+};
+
+
+const mockRecentMatchDetails = {
+    outcome: 'win',
+    gameLength: '897',
+    summonerName: 'Mark and Sweep',
+    summonerSpells: [
+        'flash',
+        'ignite'
+    ],
+    champion: 'Ahri',
+    kda: '1.2',
+    items: [
+        'item1',
+        'item2',
+        'item3'
+    ],
+    level: '16',
+    creepScore: '190',
+    creepScorePerMinute: '1.43'
+};
+
+/**
+ * Too lazy to set up Mocha Chai. This will be a mock service to return a sample response
+ * @return {Promise}
+ */
+RiotService.prototype.mockService = () => {
+
+    return new Promise((resolve, reject) => {
+        resolve(_formatMatchData(mockRecentMatchDetails));
+    });
 };
 
 module.exports = RiotService;

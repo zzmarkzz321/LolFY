@@ -11,7 +11,7 @@ const RiotService = require('../../services/riotService/index');
  */
 controller.getSummonerInfo = (req, res) => {
 
-    let summonerName = req.params.summoner;
+    let summonerName = req.params.summonerName;
 
     return RiotService.prototype.getRecentMatchHistory(summonerName)
         .then((result) => {
@@ -24,6 +24,20 @@ controller.getSummonerInfo = (req, res) => {
             res.json({'match_info': 'gay hit'});
         });
 
+};
+
+controller.getMockData = (req, res) => {
+    let summonerName = req.params.summonerName;
+    console.log(summonerName);
+    console.log('Test');
+    return RiotService.prototype.mockService()
+        .then((results) => {
+            console.log(results);
+            res.json(results);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 module.exports = controller;

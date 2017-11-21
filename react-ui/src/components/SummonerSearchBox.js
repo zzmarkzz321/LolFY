@@ -1,16 +1,13 @@
 import React from 'react';
-import { Input } from 'semantic-ui-react'
 
 const SummonerSearchBox = (props) => (
     <form onSubmit={props._onSubmit} >
-        <Input
-            icon={{ name: 'search', circular: true, link: true}}
-            placeholder={props.summoner_name}
-            size='big'
-        />
-
-        <input type="submit" value="Submit" />
-
+        <div className='ui big icon input'>
+            <input type='text' placeholder='Search...'/>
+            <button type='submit'>
+                <i className='search link icon'></i>
+            </button>
+        </div>
     </form>
 );
 

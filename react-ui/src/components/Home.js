@@ -10,7 +10,7 @@ const HomeComponent = (props) => (
             <p>Mini LoL Stat Application. Powered by React and NodeJS.</p>
         </div>
 
-        <SearchBox summoner_name="Mark and Sweep" _onSubmit={props._onSubmit}/>
+        <SearchBox summoner_name="Mark and Sweep" _onSubmit={props._onSubmit} _onChange={props._onChange}/>
     </div>
 );
 
