@@ -21,7 +21,7 @@ controller.getSummonerInfo = (req, res) => {
             res.json({'match_info': 'SummonerInfo hit!'});
         })
         .catch(() => {
-            res.json({'match_info': 'gay hit'});
+            res.json({'match_info': 'no hit'});
         });
 
 };
@@ -29,7 +29,6 @@ controller.getSummonerInfo = (req, res) => {
 controller.getMockData = (req, res) => {
     let summonerName = req.params.summonerName;
     console.log(summonerName);
-    console.log('Test');
     return RiotService.prototype.mockService()
         .then((results) => {
             console.log(results);
